@@ -23,7 +23,7 @@
     },
     addCard: function () {
       console.log('adding card')
-      axios.post(`http://localhost:3000/posts/${this.post.id}`).then(reponse => {
+      axios.post(`http://localhost:3000/posts/${this.card.id}`).then(reponse => {
         console.log(response.data);
         this.$router.push("/posts")
       })
@@ -39,6 +39,6 @@
     <p> {{card.rules_text}}</p>
     <i> {{card.flavor_text}}</i>
     <div v-if="card.power"><h4> {{card.power}}/{{card.toughness}}</h4></div>
-    
+    <button @click="">Add to deck(nonfunctional)</button>
   </div>
 </template>
