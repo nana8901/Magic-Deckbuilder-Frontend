@@ -4,6 +4,9 @@ import LogoutView from '../views/LogoutView.vue'
 import DecksIndex from '../views/DecksIndex.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
+import CardsIndex from '../views/CardsIndex.vue'
+import CardsShow from '../views/CardsShow.vue'
+
 
 const routes = [
   {
@@ -23,6 +26,8 @@ const routes = [
   {path: '/decks', name: 'decks', component: DecksIndex},
   {path: '/login', name: 'login', component: LoginView},
   {path: '/signup', name: 'signup', component: SignupView},
+  {path: '/cards', name: 'cards', component: CardsIndex},
+  {path: '/cards/:id', name: 'cardsshow', component: CardsShow},
 
 ]
 
