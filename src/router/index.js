@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import DecksIndex from '../views/DecksIndex.vue'
+import LoginView from '../views/LoginView.vue'
+import SignupView from '../views/SignupView.vue'
 
 const routes = [
   {
@@ -19,6 +21,8 @@ const routes = [
   },
   {path: '/logout', name: 'logout', component: LogoutView},
   {path: '/decks', name: 'decks', component: DecksIndex},
+  {path: '/login', name: 'login', component: LoginView},
+  {path: '/signup', name: 'signup', component: SignupView},
 
 ]
 
