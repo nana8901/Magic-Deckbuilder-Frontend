@@ -10,11 +10,11 @@
     },
     methods: {
       submit: function () {
-        axios
-          .post("/users", this.newUserParams)
+        console.log(this.newUserParams)
+        axios.post("http://localhost:3000/users", this.newUserParams)
           .then((response) => {
             console.log(response.data);
-            this.$router.push("/login");
+            this.$router.push("http://localhost:3000/login");
           })
           .catch((error) => {
             this.errors = error.response.data.errors;
