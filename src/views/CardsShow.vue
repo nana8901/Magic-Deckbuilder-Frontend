@@ -4,8 +4,9 @@
   export default {
   data: function () {
     return {
-      card: 0
-
+      card: 0,
+      num: [0, 1, 2, 3, 4],
+      newCardAddParams: {deck_id: 1, card_id: 2}
     };
   },
   created: function () {
@@ -17,28 +18,45 @@
       console.log('displaying card')
       console.log(this.$route.params.id)
       axios.get("http://localhost:3000/cards/" + this.$route.params.id + ".json").then(response => {
-        console.log(response.data);
         this.card = response.data
+        this.newCardAddParams.card_id = this.card.id
       })
     },
     addCard: function () {
       console.log('adding card')
-      axios.post(`http://localhost:3000/posts/${this.card.id}`).then(reponse => {
-        console.log(response.data);
-        this.$router.push("/posts")
-      })
+      console.log(this.newCardAddParams)
+      axios.post(`http://localhost:3000/cards/${this.card.id}/add`, this.newCardAddParams)
     }
   }
 };
 </script>
-
+<head>{{ this.card.name }}</head>
+<style type="text/css">
+  * {margin: 0; padding: 0;}
+  #container {height: 100%; width: 100%; font-size: 0;}
+  #left, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
+  #left {width: 50%;}
+  #right {width: 50%; }
+</style>
 <template>
-  <div class="cards-show">
-    <p> <h3>{{card.name}} </h3>   {{card.cost}}</p>
-    <h4> {{card.types }}</h4>
-    <p> {{card.rules_text}}</p>
-    <i> {{card.flavor_text}}</i>
-    <div v-if="card.power"><h4> {{card.power}}/{{card.toughness}}</h4></div>
-    <button @click="">Add to deck(nonfunctional)</button>
+  <div id="container">
+    
+      <div id="left">
+        <img v-bind:src="card.image_url" />
+      </div>
+      <div id="right">
+        <p> <h3>{{card.name}} </h3>   {{card.cost}}</p>
+      <h4> {{card.types }}</h4>
+      <p> {{card.rules_text}}</p>
+      <i> {{card.flavor_text}}</i>
+      <div v-if="card.power"><h4> {{card.power}}/{{card.toughness}}</h4></div>
+      <select v-model="newCardAddParams.number_in_deck" class="form-control sl">
+        <option v-for="num in this.num" v-bind:value="num">
+          {{num}}
+        </option>
+      </select>
+      <button @click="this.addCard">Add to deck(semifunctional)</button>
+      
+    </div>
   </div>
 </template>
