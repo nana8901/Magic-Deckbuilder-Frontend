@@ -9,10 +9,10 @@
       }
     },
     created: function () {
-      this.indexDecks();
-    },
+      this.indexCards()
+        },
     methods: {
-      indexDecks: function () {
+      indexCards: function () {
         console.log('getting data')
         axios.get("http://localhost:3000/decks.json").then(response => {
         console.log(response.data);
@@ -23,15 +23,3 @@
     }
   }
 </script>
-
-<template>
-  <div class="decks">
-    <div v-for="deck in decks" v-bind:key="deck.id">
-      <div>
-        <h4>{{deck.name}}</h4>
-        <p>{{  deck.description.substring(0,30) }}</p>
-      </div>
-    </div>
-  </div>
-
-</template>
