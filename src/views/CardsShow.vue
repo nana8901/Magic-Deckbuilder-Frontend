@@ -6,7 +6,8 @@
     return {
       card: 0,
       num: [0, 1, 2, 3, 4],
-      newCardAddParams: {deck_id: 1, card_id: 2}
+      newCardAddParams: {deck_id: 1, card_id: 2},
+      decks:[]
     };
   },
   created: function () {
@@ -21,12 +22,17 @@
         this.card = response.data
         this.newCardAddParams.card_id = this.card.id
       })
+      console.log('checking decks')
+      axios.get("http://localhost:3000/decks.json").then(response => {
+        console.log(response.data);
+        this.decks = response.data
+      })
     },
     addCard: function () {
       console.log('adding card')
       console.log(this.newCardAddParams)
       axios.post(`http://localhost:3000/cards/${this.card.id}/add`, this.newCardAddParams)
-    }
+    },
   }
 };
 </script>
@@ -53,6 +59,12 @@
       <select v-model="newCardAddParams.number_in_deck" class="form-control sl">
         <option v-for="num in this.num" v-bind:value="num">
           {{num}}
+        </option>
+      </select>
+
+      <select v-model="newCardAddParams.deck_id" class="form-control sl">
+        <option v-for="deck in this.decks" v-bind:value="deck.id">
+          {{deck.name}}
         </option>
       </select>
       <button @click="this.addCard">Add to deck(semifunctional)</button>
