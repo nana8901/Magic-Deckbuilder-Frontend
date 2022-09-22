@@ -41,6 +41,7 @@
       <div>
         <h4>{{deck.name}}</h4>
         <p>{{  deck.description.substring(0,30) }}</p>
+        <a class="btn btn-primary" v-bind:href="`/decks/${deck.id}`">See More</a>
       </div>
     </div>
   </div>
