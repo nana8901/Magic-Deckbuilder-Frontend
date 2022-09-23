@@ -33,10 +33,26 @@
 
   </div>
   <div class="deck_cards">
-    <div v-for="card in this.cards" v-bind:key="card.id" >
-      <span @mouseover="hover = true" @mouseleave="hover = false"><h5>{{card.name}} X {{card.number_in_deck}}</h5></span>
-      <img v-bind:src="card.image_url" v-if="hover" />
-      <hr />
-    </div>
+    <ul>
+      <div v-for="card in this.cards" v-bind:key="card.id" >
+        <li>
+          <h5>{{card.name}} X {{card.number_in_deck}}</h5>
+          <span class="card_image">
+            <img v-bind:src="card.image_url" />
+          </span>
+        </li>
+        <hr />
+      </div>
+    </ul>
   </div>
 </template>
+<style>
+  .card_image{
+    position: absolute;
+    left: -9999px
+  }
+  li:hover .card_image{
+    left: 30px;
+    top: 10px;
+  }
+</style>
