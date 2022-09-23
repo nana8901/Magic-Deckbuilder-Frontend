@@ -7,6 +7,7 @@ import SignupView from '../views/SignupView.vue'
 import CardsIndex from '../views/CardsIndex.vue'
 import CardsShow from '../views/CardsShow.vue'
 import DecksShow from '../views/DecksShow.vue'
+import DecksEdit from '../views/DecksEdit.vue'
 
 
 const routes = [
@@ -29,7 +30,9 @@ const routes = [
   {path: '/signup', name: 'signup', component: SignupView},
   {path: '/cards', name: 'cards', component: CardsIndex},
   {path: '/cards/:id', name: 'cardsshow', component: CardsShow},
+  {path: '/decks/:id/edit', name: 'decksedit', component: DecksEdit},
   {path: '/decks/:id', name: 'decksshow', component: DecksShow},
+  
 
 ]
 

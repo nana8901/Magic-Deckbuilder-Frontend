@@ -27,22 +27,33 @@
       },
       addDeck: function () {
         console.log(`new deck with ${this.newDeck.name} for a name`)
-        axios.post("http://localhost:3000/decks.json", this.newDeck)
-
+        axios.post("http://localhost:3000/decks.json", this.newDeck).then(response =>{
+          console.log(response);
+          window.location.reload();
+        })
+      },
+      deleteDeck: function (toDelete) {
+        console.log(`delete deck ${toDelete.name}`)
+        axios.delete(`http://localhost:3000/decks/${toDelete.id}.json`).then(response => {
+          console.log(response);
+          window.location.reload();
+        })
       }
     }
   }
 </script>
 
 <template>
-  <button @click="deckName">Add Deck(semifunctional)</button>
+  <button @click="deckName">Add a Deck</button>
   <div class="decks">
     <div v-for="deck in decks" v-bind:key="deck.id">
       <div>
-        <h4>{{deck.name}}</h4>
+        <h4><a class="btn btn-primary" v-bind:href="`/decks/${deck.id}`">{{deck.name}}</a></h4>
         <p>{{  deck.description.substring(0,30) }}</p>
-        <a class="btn btn-primary" v-bind:href="`/decks/${deck.id}`">See More</a>
+        <button @click="deleteDeck(deck)">Delete Deck(nonfunctional)</button>
       </div>
+      <hr />
+
     </div>
   </div>
 

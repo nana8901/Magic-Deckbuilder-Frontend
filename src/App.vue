@@ -1,18 +1,22 @@
 <template>
   <nav>
     | <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/logout">Logout</router-link> |
-    <router-link to="/decks">Decks</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/signup">Signup</router-link> |
-    <router-link to="/cards">Cards</router-link> |
+    <router-link to="/about"> About</router-link> |
+    <div v-if="isLoggedIn">
+      <router-link to="/logout"> Logout</router-link>  |
+    </div>
+    <router-link to="/decks"> Decks</router-link> |
+    <div v-if="!isLoggedIn">
+     <router-link v-if="!isLoggedIn" to="/login"> Login</router-link> | 
+      <router-link to="/signup"> Signup</router-link> |
+    </div>
+    <router-link to="/cards"> Cards</router-link> |
     
 
   </nav>
   <div class="container">
       Am I logged in? {{isLoggedIn}}
-    </div>
+  </div>
   <router-view/>
 </template>
 <script>
