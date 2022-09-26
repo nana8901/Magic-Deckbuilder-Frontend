@@ -36,7 +36,7 @@
     <ul>
       <div v-for="card in this.cards" v-bind:key="card.id" >
         <li>
-          <h5>{{card.name}} X {{card.number_in_deck}}</h5>
+          <h4>{{card.name}} X {{card.number_in_deck}}</h4>
           <span class="card_image">
             <img v-bind:src="card.image_url" />
           </span>
