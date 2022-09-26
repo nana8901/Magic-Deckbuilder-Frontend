@@ -32,10 +32,27 @@
 <template>
   Search: <input type="text" v-model="this.searchTerm" />
   <div class="cards">
-    <div v-for="card in nameFilter()" v-bind:key="card.id">
-      <h5>{{card.name}}</h5>
-      <a class="btn btn-primary" v-bind:href="`/cards/${card.id}`">See More</a>
-      <hr />
-    </div>
+    <ul>
+      <div v-for="card in nameFilter()" v-bind:key="card.id">
+        <li>
+          <h5>{{card.name}}</h5>
+          <span class="card_image">
+            <img v-bind:src="card.image_url" />
+          </span>
+          <a class="btn btn-primary" v-bind:href="`/cards/${card.id}`">See More</a>
+        </li>
+        <hr />
+      </div>
+    </ul>
   </div>
 </template>
+<style>
+  .card_image{
+    position: absolute;
+    left: -9999px
+  }
+  li:hover .card_image{
+    left: 30px;
+    top: 10px;
+  }
+</style>
