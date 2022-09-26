@@ -57,7 +57,10 @@
       <i> {{card.flavor_text}}</i>
       <div v-if="card.power"><h4> {{card.power}}/{{card.toughness}}</h4></div>
       <select v-model="newCardAddParams.number_in_deck" class="form-control sl">
-        <option v-for="num in this.num" v-bind:value="num">
+        <option v-if="card.types.includes('Basic')" v-for="num in 99" v-bind:value="num">
+          {{num}}
+        </option>
+        <option v-if="!card.types.includes('Basic')" v-for="num in this.num" v-bind:value="num">
           {{num}}
         </option>
       </select>
