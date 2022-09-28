@@ -50,7 +50,7 @@
       <div>
         <h4><a class="btn btn-primary" v-bind:href="`/decks/${deck.id}`">{{deck.name}}</a></h4>
         <p>{{  deck.description.substring(0,30) }}</p>
-        <button @click="deleteDeck(deck)">Delete Deck</button>
+        <button @click="deleteDeck(deck)">Delete Deck(nonfunctional)</button>
       </div>
       <hr />
 
