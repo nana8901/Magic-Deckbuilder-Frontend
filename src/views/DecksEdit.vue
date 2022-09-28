@@ -46,7 +46,7 @@
 
 <template>
   <div class="decks-edit">    
-    {{ message }}
+    {{ deck }}
     <p>Name: <input type="text" v-model="deck.name" /></p>
     <p>Description: <input type="text" v-model="deck.description" /></p>
     <button v-on:click="updateDeck()">Update</button>
@@ -55,7 +55,7 @@
     <ul>
       <div v-for="card in this.cards" v-bind:key="card.id" >
         <li>
-          <h4>{{card.name}} <select v-model="newCardAddParams[card.id]" class="form-control sl">
+          <h4>{{card.name}} <select v-model="card.number_in_deck" class="form-control sl">
               <option v-if="card.types.includes('Basic')" v-for="num in 99" v-bind:value="num">
                 {{num}}
               </option>
