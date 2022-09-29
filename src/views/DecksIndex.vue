@@ -45,6 +45,7 @@
 
 <template>
   <button @click="deckName">Add a Deck</button>
+  <hr />
   <div class="decks">
     <div v-for="deck in decks" v-bind:key="deck.id">
       <div>
