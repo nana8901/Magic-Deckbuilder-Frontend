@@ -1,11 +1,12 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>What is this?</h1>
+    <h4>This is my capstone project for Actualize coding bootcamp.</h4>
+    <h2>Who made this?</h2>
+    <h4>My name is Nathan Brownstein! I live in Columbus Ohio, and I'm looking to become a web developer.</h4>
   </div>
   <div>
-    <span @mouseover="hover = true" @mouseleave="hover = false"> Hover me to show the message!
-    </span>
-    <span v-if="hover">This is a secret message.</span>
+    
   </div>
 </template>
 
