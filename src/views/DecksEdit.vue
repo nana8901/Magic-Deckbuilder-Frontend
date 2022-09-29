@@ -67,7 +67,7 @@
               </option>
             </select>
           </h4>
-          <button @click="this.changeCard(card)">Submit(semifunctional)</button>
+          <button @click="this.changeCard(card)">Submit</button>
           <p />
           <button @click="deleteCard(card)">Delete card?</button>
           <span class="card_image">
