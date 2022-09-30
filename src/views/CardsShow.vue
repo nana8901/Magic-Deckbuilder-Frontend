@@ -70,7 +70,7 @@
             {{deck.name}}
           </option>
         </select>
-        <button @click="this.addCard">Add to deck(semifunctional)</button>
+        <button @click="this.addCard">Add to deck</button>
       
     </div>
   </div>
