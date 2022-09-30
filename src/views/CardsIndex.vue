@@ -21,12 +21,18 @@
         this.cards = response.data
       })
       },
-      nameFilter: function() {
-        return this.cards.filter(card => {
+      nameFilterAndPaginate: function() {
+        var out =  this.cards.filter(card => {
           var lowerSearchTerm = this.searchTerm.toLowerCase();
           var lowerCardName = card.name.toLowerCase();
           return lowerCardName.includes(lowerSearchTerm)
         })
+        i = 0
+        while (i<0 && out[(this.page * 20) + 1] != nil) {
+          this.cardSlice[i] = out[i + (this.page * 20)]
+          i = i + 1;
+        }
+        return this.cardSlice
       }
     }
   }
@@ -35,7 +41,7 @@
   Search: <input type="text" v-model="this.searchTerm" />
   <div class="cards">
     <ul>
-      <div v-for="card in nameFilter()" v-bind:key="card.id">
+      <div v-for="card in nameFilterAndPaginate()" v-bind:key="card.id">
         <li>
           <h5>{{card.name}}</h5>
           <span class="card_image">
@@ -48,6 +54,7 @@
       </div>
     </ul>
   </div>
+  
 </template>
 <style>
   .card_image{

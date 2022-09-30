@@ -7,7 +7,7 @@
       card: 0,
       num: [0, 1, 2, 3, 4],
       newCardAddParams: {deck_id: 1, card_id: 2},
-      decks:[]
+      decks:[],
     };
   },
   created: function () {
