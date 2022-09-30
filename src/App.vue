@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <!-- <div class="container">
       Am I logged in? {{isLoggedIn}}
-  </div>
+  </div> -->
   <p />
   <router-view/>
 </template>
