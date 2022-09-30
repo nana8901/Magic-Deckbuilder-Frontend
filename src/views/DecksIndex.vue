@@ -45,12 +45,13 @@
 
 <template>
   <button @click="deckName">Add a Deck</button>
+  <hr />
   <div class="decks">
     <div v-for="deck in decks" v-bind:key="deck.id">
       <div>
         <h4><a class="btn btn-primary" v-bind:href="`/decks/${deck.id}`">{{deck.name}}</a></h4>
         <p>{{  deck.description.substring(0,30) }}</p>
-        <button @click="deleteDeck(deck)">Delete Deck(nonfunctional)</button>
+        <button @click="deleteDeck(deck)">Delete Deck</button>
       </div>
       <hr />
 

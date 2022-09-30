@@ -38,7 +38,10 @@
         })
       },
       changeCard: function (toChangeCard) {
-        console.log('change card ' + toChangeCard.in_deck_id + " " + toChangeCard.name + ' ' + this.newCardAddParams[toChangeCard.id])
+        console.log('change card ' + toChangeCard.in_deck_id + " " + toChangeCard.name + ', changing number to ' + toChangeCard.number_in_deck)
+        this.newCardAddParams.id = toChangeCard.in_deck_id, 
+        this.newCardAddParams.number_in_deck = toChangeCard.number_in_deck
+        axios.patch(`http://localhost:3000/cards`, this.newCardAddParams)
       }
     },
   };
@@ -46,7 +49,7 @@
 
 <template>
   <div class="decks-edit">    
-    {{ deck }}
+    <!-- {{ deck }} -->
     <p>Name: <input type="text" v-model="deck.name" /></p>
     <p>Description: <input type="text" v-model="deck.description" /></p>
     <button v-on:click="updateDeck()">Update</button>
@@ -64,7 +67,7 @@
               </option>
             </select>
           </h4>
-          <button @click="this.changeCard(card)">Submit(semifunctional)</button>
+          <button @click="this.changeCard(card)">Submit</button>
           <p />
           <button @click="deleteCard(card)">Delete card?</button>
           <span class="card_image">

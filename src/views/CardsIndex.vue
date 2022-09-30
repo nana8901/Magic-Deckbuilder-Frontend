@@ -5,7 +5,9 @@
     data: function() {
       return {
         cards: [],
-        searchTerm: ""
+        searchTerm: "",
+        page: 1,
+        cardSlice:[]
       }
     },
     created: function() {
@@ -40,6 +42,7 @@
             <img v-bind:src="card.image_url" />
           </span>
           <a class="btn btn-primary" v-bind:href="`/cards/${card.id}`">See More</a>
+          
         </li>
         <hr />
       </div>
@@ -52,7 +55,8 @@
     left: -9999px
   }
   li:hover .card_image{
-    left: 30px;
-    top: 10px;
+    position: fixed;
+    left: 40px;
+    top: 30px;
   }
 </style>

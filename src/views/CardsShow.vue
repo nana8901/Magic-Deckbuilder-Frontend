@@ -17,9 +17,9 @@
   methods: {
     showCard: function () {
       console.log('displaying card')
-      console.log(this.$route.params.id)
       axios.get("http://localhost:3000/cards/" + this.$route.params.id + ".json").then(response => {
         this.card = response.data
+        console.log(this.card)
         this.newCardAddParams.card_id = this.card.id
       })
       console.log('checking decks')
@@ -48,29 +48,29 @@
   <div id="container">
     
       <div id="left">
-        <img v-bind:src="card.image_url" />
+        <img v-bind:src="this.card.image_url" />
       </div>
       <div id="right">
-        <p> <h3>{{card.name}} </h3>   {{card.cost}}</p>
-      <h4> {{card.types }}</h4>
-      <p> {{card.rules_text}}</p>
-      <i> {{card.flavor_text}}</i>
-      <div v-if="card.power"><h4> {{card.power}}/{{card.toughness}}</h4></div>
-      <select v-model="newCardAddParams.number_in_deck" class="form-control sl">
-        <option v-if="card.types.includes('Basic')" v-for="num in 99" v-bind:value="num">
-          {{num}}
-        </option>
-        <option v-if="!card.types.includes('Basic')" v-for="num in this.num" v-bind:value="num">
-          {{num}}
-        </option>
-      </select>
+        <p> <h3>{{this.card.name}} </h3>   {{this.card.cost}}</p>
+      <!-- <h4> {{this.card.types }}</h4> -->
+      <p> {{this.card.rules_text}}</p>
+      <i> {{this.card.flavor_text}}</i>
+      <div v-if="this.card.power"><h4> {{this.card.power}}/{{this.card.toughness}}</h4></div>
+        <select v-model="newCardAddParams.number_in_deck" class="form-control sl">
+          <option v-if="this.card.types.includes('Basic')" v-for="num in 99" v-bind:value="num">
+            {{num}}
+          </option>
+          <option v-if="!this.card.types.includes('Basic')" v-for="num in this.num" v-bind:value="num">
+            {{num}}
+          </option>
+        </select>
 
-      <select v-model="newCardAddParams.deck_id" class="form-control sl">
-        <option v-for="deck in this.decks" v-bind:value="deck.id">
-          {{deck.name}}
-        </option>
-      </select>
-      <button @click="this.addCard">Add to deck(semifunctional)</button>
+        <select v-model="newCardAddParams.deck_id" class="form-control sl">
+          <option v-for="deck in this.decks" v-bind:value="deck.id">
+            {{deck.name}}
+          </option>
+        </select>
+        <button @click="this.addCard">Add to deck(semifunctional)</button>
       
     </div>
   </div>
