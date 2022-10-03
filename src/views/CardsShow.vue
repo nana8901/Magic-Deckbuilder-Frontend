@@ -15,12 +15,10 @@
   },
   methods: {
     showCard: function () {
-      console.log('displaying card')
       axios.get("http://localhost:3000/cards/" + this.$route.params.id + ".json").then(response => {
         this.card = response.data
         this.newCardAddParams.card_id = this.card.id
       })
-      console.log('checking decks')
       axios.get("http://localhost:3000/decks.json").then(response => {
         this.decks = response.data
       })
