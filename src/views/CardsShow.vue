@@ -12,25 +12,20 @@
   },
   created: function () {
     this.showCard();
-
   },
   methods: {
     showCard: function () {
       console.log('displaying card')
       axios.get("http://localhost:3000/cards/" + this.$route.params.id + ".json").then(response => {
         this.card = response.data
-        console.log(this.card)
         this.newCardAddParams.card_id = this.card.id
       })
       console.log('checking decks')
       axios.get("http://localhost:3000/decks.json").then(response => {
-        console.log(response.data);
         this.decks = response.data
       })
     },
     addCard: function () {
-      console.log('adding card')
-      console.log(this.newCardAddParams)
       axios.post(`http://localhost:3000/cards/${this.card.id}/add`, this.newCardAddParams)
     },
   }
@@ -52,7 +47,7 @@
       </div>
       <div id="right">
         <p> <h3>{{this.card.name}} </h3>   {{this.card.cost}}</p>
-      <!-- <h4> {{this.card.types }}</h4> -->
+      <h4> {{this.card.types }}</h4>
       <p> {{this.card.rules_text}}</p>
       <i> {{this.card.flavor_text}}</i>
       <div v-if="this.card.power"><h4> {{this.card.power}}/{{this.card.toughness}}</h4></div>
