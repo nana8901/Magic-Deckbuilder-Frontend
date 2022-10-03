@@ -29,6 +29,7 @@
     <h3>{{deck.name}}</h3>
     <p>{{deck.description}}</p>
     <a class="btn btn-primary" v-bind:href="`/decks/${this.$route.params.id}/edit`">Edit Deck</a>
+    <hr />
 
   </div>
   <div class="deck_cards">
