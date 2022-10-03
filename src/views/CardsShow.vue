@@ -12,7 +12,6 @@
   },
   created: function () {
     this.showCard();
-
   },
   methods: {
     showCard: function () {
@@ -52,7 +51,7 @@
       </div>
       <div id="right">
         <p> <h3>{{this.card.name}} </h3>   {{this.card.cost}}</p>
-      <!-- <h4> {{this.card.types }}</h4> -->
+      <h4> {{this.card.types }}</h4>
       <p> {{this.card.rules_text}}</p>
       <i> {{this.card.flavor_text}}</i>
       <div v-if="this.card.power"><h4> {{this.card.power}}/{{this.card.toughness}}</h4></div>

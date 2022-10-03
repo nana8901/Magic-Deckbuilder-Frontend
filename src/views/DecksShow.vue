@@ -16,7 +16,6 @@
       indexCards: function () {
         console.log('getting data')
         axios.get(`http://localhost:3000/decks/${this.$route.params.id}.json`).then(response => {
-        console.log(response.data);
         this.cards = response.data.cards
         this.deck = response.data
       })
@@ -34,6 +33,7 @@
   </div>
   <div class="deck_cards">
     <ul>
+      <!-- need to add in a proper ordered list-add in divides for lands, creatures, noncreatures -->
       <div v-for="card in this.cards" v-bind:key="card.id" >
         <li>
           <h4>{{card.name}} X {{card.number_in_deck}}</h4>
