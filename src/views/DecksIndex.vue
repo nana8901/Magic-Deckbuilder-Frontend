@@ -14,28 +14,21 @@
     },
     methods: {
       indexDecks: function () {
-        console.log('getting data')
         axios.get("http://localhost:3000/decks.json").then(response => {
-          console.log(response.data);
           this.decks = response.data
         })
 
       },
       deckName: function () {
-        console.log('New deck name here;')
         document.querySelector('#new-deck').showModal();
       },
       addDeck: function () {
-        console.log(`new deck with ${this.newDeck.name} for a name`)
         axios.post("http://localhost:3000/decks.json", this.newDeck).then(response =>{
-          console.log(response);
           window.location.reload();
         })
       },
       deleteDeck: function (toDelete) {
-        console.log(`delete deck ${toDelete.name}`)
         axios.delete(`http://localhost:3000/decks/${toDelete.id}.json`).then(response => {
-          console.log(response);
           window.location.reload();
         })
       }

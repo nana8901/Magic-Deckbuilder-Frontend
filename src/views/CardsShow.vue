@@ -18,18 +18,14 @@
       console.log('displaying card')
       axios.get("http://localhost:3000/cards/" + this.$route.params.id + ".json").then(response => {
         this.card = response.data
-        console.log(this.card)
         this.newCardAddParams.card_id = this.card.id
       })
       console.log('checking decks')
       axios.get("http://localhost:3000/decks.json").then(response => {
-        console.log(response.data);
         this.decks = response.data
       })
     },
     addCard: function () {
-      console.log('adding card')
-      console.log(this.newCardAddParams)
       axios.post(`http://localhost:3000/cards/${this.card.id}/add`, this.newCardAddParams)
     },
   }

@@ -15,7 +15,6 @@
     },
     methods: {
       indexCards: function () {
-        console.log('getting data')
         axios.get("http://localhost:3000/cards.json").then(response => {
         this.cards = response.data
       })

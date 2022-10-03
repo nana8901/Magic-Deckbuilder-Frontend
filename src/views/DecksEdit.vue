@@ -14,31 +14,23 @@
     },
     methods: {
       showDeck: function() {
-        console.log('in show deck')
-        console.log(this.$route.params.id)
         axios.get("http://localhost:3000/decks/" + this.$route.params.id + ".json").then(response => {
-          console.log(response.data);
           this.deck = response.data;
           this.cards= response.data.cards;
           this.newCardAddParams.deck_id = this.deck.id
         })
       },
       updateDeck: function() {
-        console.log('updating deck...')
         axios.patch(`http://localhost:3000/decks/${this.deck.id}.json`, this.deck).then(response => {
-          console.log(response.data);
           this.$router.push(`/decks/${this.deck.id}`);
         })
       },
       deleteCard: function (toGoCard) {
-        console.log('delete card ' + toGoCard.in_deck_id + " " + toGoCard.name)
         axios.delete(`http://localhost:3000/cards/${toGoCard.in_deck_id}`).then(response => {
-          console.log(response)
           window.location.reload();
         })
       },
       changeCard: function (toChangeCard) {
-        console.log('change card ' + toChangeCard.in_deck_id + " " + toChangeCard.name + ', changing number to ' + toChangeCard.number_in_deck)
         this.newCardAddParams.id = toChangeCard.in_deck_id, 
         this.newCardAddParams.number_in_deck = toChangeCard.number_in_deck
         axios.patch(`http://localhost:3000/cards`, this.newCardAddParams)
